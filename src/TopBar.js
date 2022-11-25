@@ -79,11 +79,13 @@ const Account = styled.div`
         height: 30px;
         margin-left: 20px;
         border: none;
+        cursor: pointer;
     }
     ion-icon{
         width: 40px;
         height: 40px;
         margin-left: 20px;
+        cursor: pointer;
     }
 `
 const Login = styled.div`
@@ -99,6 +101,7 @@ const Login = styled.div`
     background-color: grey;
     opacity: 0.7;
     border-radius: 8px;
+    z-index: 1;
     form{
         align-items: center;
         justify-content: center;
@@ -131,6 +134,7 @@ const SignUp = styled.div`
     background-color: grey;
     opacity: 0.7;
     border-radius: 8px;
+    z-index: 1;
     form{
         align-items: center;
         justify-content: center;

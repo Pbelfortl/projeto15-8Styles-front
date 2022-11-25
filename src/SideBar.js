@@ -25,7 +25,7 @@ const Bar = styled.aside`
     width: ${props => props.show ===false ? '4vw' : '10vw'};
     height: 100vh;
     background-color: #181824;
-    
+    z-index: 2;
     ion-icon{
         color: white;
         width: 40px;
