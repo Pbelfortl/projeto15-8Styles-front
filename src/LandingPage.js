@@ -2,6 +2,8 @@ import axios from "axios"
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 import BASE_URL from "./constants/url.js"
+import TopBar from "./TopBar.js"
+import SideBar from "./SideBar.js"
 
 
 export default function LandingPage () {
@@ -17,6 +19,9 @@ export default function LandingPage () {
     }, [])
 
     return(
+        <>
+        <TopBar/>
+        <SideBar/>
         <Container>
             {products.map(product => 
                 <Product key={product._id}>  
@@ -26,6 +31,8 @@ export default function LandingPage () {
                     <button><ion-icon name="bag-add-outline"></ion-icon></button>
                 </Product>)}
         </Container>
+        </>
+        
     )
 }
 
