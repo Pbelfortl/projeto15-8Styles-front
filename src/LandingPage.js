@@ -26,7 +26,7 @@ export default function LandingPage () {
             {products.map(product => 
                 <Product key={product._id}>  
                     <img src={product.image} alt="produto"/>
-                    <div><span>{product.name}</span> <span>R$ {product.value}</span></div>
+                    <div><span>{product.name}</span> <span>R$ {(product.value).toFixed(2)}</span></div>
                     <div>{product.description}</div>
                     <button><ion-icon name="bag-add-outline"></ion-icon></button>
                 </Product>)}
@@ -40,11 +40,12 @@ export default function LandingPage () {
 const Container = styled.div`
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     padding: 20px;
     position: absolute;
     top: 90px;
-    right: 7.5vw;
-    width: 80vw;
+    right: 4vw;
+    width: 84vw;
     min-height: 80vh;
     background-color: white;
     border-radius: 10px;
@@ -63,7 +64,7 @@ const Product = styled.div`
     margin: 20px;
     background-size: cover;
     img{
-        
+        border-radius: 5px;
         width: 298px;
         height: 200px;
         object-fit: cover;
