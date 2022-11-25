@@ -1,53 +1,47 @@
 import { useState } from "react"
 import styled from "styled-components"
+import Login from "./Login"
+import SignUp from "./Sign-up"
 
 
-export default function TopBar () {
+export default function TopBar() {
 
     const [showLogin, setShowLogin] = useState(false)
     const [showSignUp, setShowSignUp] = useState(false)
 
     return (
         <>
-        <Bar>
-            <input placeholder="Pesquisar"></input>
-            <Account>
-                <button onClick={() => {
-                    setShowSignUp(true)
-                    setShowLogin(false)
+            <Bar>
+                <input placeholder="Pesquisar"></input>
+                <Account>
+                    <button onClick={() => {
+
+                        if (showSignUp) {
+                            setShowSignUp(false)
+                            return
+                        }
+
+                        setShowSignUp(true)
+                        setShowLogin(false)
                     }}>Cadastre-se</button>
-                <button onClick={() => {
-                    setShowSignUp(false)
-                    setShowLogin(true)}}>Entrar</button>
-                <ion-icon name="cart-outline"></ion-icon>
-                <ion-icon name="exit-outline"></ion-icon>
-            </Account>
-        </Bar>
-        <Login showLogin={showLogin}>
-            <form>
-                <input></input>
-                <input></input>
-                <button>Entrar</button>
-            </form>
-            <button onClick={() => {
-                setShowLogin(!showLogin)
-                setShowSignUp(false)
-                }}>Cancelar</button>
-        </Login>
-        <SignUp showSignUp={showSignUp}>
-            <form>
-                <input></input>
-                <input></input>
-                <input></input>
-                <input></input>
-                <button>Cadastrar</button>
-            </form>
-            <button onClick={() => {
-                setShowSignUp(!showSignUp)
-                setShowLogin(false)
-                }}>Cancelar</button>
-        </SignUp>
-        </> 
+                    <button onClick={() => {
+
+                        if (showLogin) {
+                            setShowLogin(false)
+                            return
+                        }
+
+                        setShowSignUp(false)
+                        setShowLogin(true)
+                    }}>Entrar</button>
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <ion-icon name="exit-outline"></ion-icon>
+                </Account>
+            </Bar>
+            <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
+            <SignUp showSignUp={showSignUp} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp}/>   
+            
+        </>
     )
 }
 
@@ -86,66 +80,5 @@ const Account = styled.div`
         margin-left: 20px;
     }
 `
-const Login = styled.div`
-    position: fixed;
-    display: ${props => props.showLogin===true ? 'flex' : 'none'};
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    top: 60px;
-    right: 60px;
-    height: 20vh;
-    width: 20vw;
-    background-color: grey;
-    opacity: 0.7;
-    border-radius: 8px;
-    form{
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-    }
-    input{
-        width: 250px;
-        height: 25px;
-        margin: 10px;
-    }
-    button{
-        background-color: none;
-        border: none;
-        margin: 10px;
-        border-radius: 5px;
-    }
-`
 
-const SignUp = styled.div`
-    position: fixed;
-    display: ${props => props.showSignUp===true ? 'flex' : 'none'};
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    top: 60px;
-    right: 60px;
-    height: 40vh;
-    width: 20vw;
-    background-color: grey;
-    opacity: 0.7;
-    border-radius: 8px;
-    form{
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-    }
-    input{
-        width: 250px;
-        height: 25px;
-        margin: 10px;
-    }
-    button{
-        background-color: none;
-        border: none;
-        margin: 10px;
-        border-radius: 5px;
-    }
-`
+
