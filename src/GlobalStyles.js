@@ -5,4 +5,8 @@ export const GlobalStyle = createGlobalStyle`
         align-items: center;
         background-color: #EFF1F5;
     }
+
+    p, h1 {
+        cursor: pointer;
+    }
 `
