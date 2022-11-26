@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components"
 import axios from "axios";
+import AuthContext from "./contexts/authContext";
 
 
 
 export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
-
+    const {token, setToken } =  useContext(AuthContext)
     const [form, setForm] = useState({ email: "", password: "" });
     const URL = "http://localhost:5000/sign-in"
 
@@ -25,8 +26,11 @@ export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
 
 
         try {
-            await axios.post(URL, body);
+            const promise = await axios.post(URL, body);
             setShowLogin(false)
+            console.log(promise.data.token);
+            setToken(promise.data.token);
+            localStorage.setItem("token", JSON.stringify(promise.data.token));
 
             const emptyInput = { email: "", password: "" }
             setForm(emptyInput)

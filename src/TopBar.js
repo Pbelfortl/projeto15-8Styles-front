@@ -39,7 +39,7 @@ export default function TopBar() {
                 </Account>
             </Bar>
             <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
-            <SignUp showSignUp={showSignUp} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp}/>   
+            <SignUp showSignUp={showSignUp} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />   
             
         </>
     )
