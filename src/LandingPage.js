@@ -39,6 +39,7 @@ export default function LandingPage () {
 
 const Container = styled.div`
     box-sizing: border-box;
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
