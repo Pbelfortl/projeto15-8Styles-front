@@ -21,7 +21,7 @@ export default function CartPage() {
   return (
     <MainContainer>
       {cart.length !== 0 && cart.map((item) => <CartItem>
-        
+
       </CartItem>)}
     </MainContainer>
   );
