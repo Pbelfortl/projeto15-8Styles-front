@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
+import AuthContext from "./contexts/authContext"
 import Login from "./Login"
 import SignUp from "./Sign-up"
 
@@ -7,6 +8,15 @@ export default function TopBar() {
 
     const [showLogin, setShowLogin] = useState(false)
     const [showSignUp, setShowSignUp] = useState(false)
+    const { setToken } = useContext(AuthContext)
+
+    function logout() {
+        localStorage.removeItem("token");
+        //localStorage.removeItem("userName");
+        setToken("");
+        //setUserName("");
+    }
+
 
     return (
         <>
@@ -34,7 +44,7 @@ export default function TopBar() {
                         setShowLogin(true)
                     }}>Entrar</button>
                     <ion-icon name="cart-outline"></ion-icon>
-                    <ion-icon name="exit-outline"></ion-icon>
+                    <ion-icon name="exit-outline" onClick={logout}></ion-icon>
                 </Account>
             </Bar>
             <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
