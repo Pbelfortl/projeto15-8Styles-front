@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/authContext";
 import { GlobalStyle } from "./GlobalStyles";
 import LandingPage from "./LandingPage";
-import SideBar from "./SideBar";
-import TopBar from "./TopBar";
 
 
 function App() {
@@ -14,8 +12,6 @@ function App() {
     <AuthProvider>
       <GlobalStyle/>
       <BrowserRouter>
-        <TopBar/>
-        <SideBar setCategory={setCategory}/>
         <Routes>
           <Route path="/" element={<LandingPage category={category}/>} />
         </Routes>

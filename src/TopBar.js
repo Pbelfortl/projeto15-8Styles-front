@@ -3,7 +3,6 @@ import styled from "styled-components"
 import Login from "./Login"
 import SignUp from "./Sign-up"
 
-
 export default function TopBar() {
 
     const [showLogin, setShowLogin] = useState(false)
@@ -40,7 +39,6 @@ export default function TopBar() {
             </Bar>
             <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
             <SignUp showSignUp={showSignUp} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />   
-            
         </>
     )
 }
@@ -73,12 +71,12 @@ const Account = styled.div`
         height: 30px;
         margin-left: 20px;
         border: none;
+        cursor: pointer;
     }
     ion-icon{
         width: 40px;
         height: 40px;
         margin-left: 20px;
+        cursor: pointer;
     }
 `
-
-

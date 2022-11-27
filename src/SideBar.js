@@ -49,6 +49,7 @@ const Bar = styled.aside`
     //width: 8vw;
     height: 100vh;
     background-color: #181824;
+    z-index: 2;
     ion-icon{
         color: white;
         width: 40px;
