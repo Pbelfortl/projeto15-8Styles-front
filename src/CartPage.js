@@ -8,11 +8,7 @@ export default function CartPage() {
   const [total, setTotal] = useState(0);
 
   const { token } = useContext(AuthContext);
-
-  useEffect(() => {
-    getCartItems();
-  }, []);
-
+  
   function getCartItems() {
     const URL = "http://localhost:5000/cart";
     const config = {
@@ -29,8 +25,13 @@ export default function CartPage() {
 
         setTotal(totalValue);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err.response.data.message));
   }
+
+  console.log(token)
+  useEffect(() => {
+    getCartItems();
+  }, [token]);
 
   return (
     <MainContainer>
