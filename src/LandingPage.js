@@ -1,22 +1,27 @@
+import { useContext, useEffect, useState } from "react"
+import styled from "styled-components";
 import axios from "axios"
-import styled from "styled-components"
-import { useEffect, useState } from "react"
+import AuthContext from "./contexts/authContext"
+import TopBar from "./TopBar.js";
+import SideBar from "./SideBar.js";
 import BASE_URL from "./constants/url.js"
-import TopBar from "./TopBar.js"
-import SideBar from "./SideBar.js"
+    
 
-
-export default function LandingPage () {
+export default function LandingPage ({ category }) {
 
     const [products, setProducts] = useState([])
 
-
     useEffect(() => {
-        axios.get(`${BASE_URL}/getProducts`)
-            .then(ans => {
-                setProducts(ans.data)})
-            .catch(ans => alert("não foi possível carregar os produtos"))
-    }, [])
+        const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}?subCategory=${category.subCategory}`)
+
+        promise.then((ans) => {
+            console.log("ok")
+            setProducts(ans.data)
+        })
+
+        promise.catch(() =>  console.log("deu ruim"))
+    }, [category])
+
 
     return(
         <>

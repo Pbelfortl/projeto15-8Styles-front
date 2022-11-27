@@ -8,4 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #EFF1F5;
     }
 
+    p, h1 {
+        cursor: pointer;
+    }
 `
