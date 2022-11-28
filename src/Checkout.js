@@ -1,35 +1,39 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
 import BASE_URL from "./constants/url.js"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import AuthContext from "./contexts/authContext.js"
 
 
-export default function Checkout () {
+export default function Checkout ({purchaseProducts, purchaseTotal}) {
 
-    const naviagte = useNavigate()
+    const navigate = useNavigate()
     const [name, setName] = useState()
     const [CEP, setCEP] = useState()
     const [payment, setPayment] = useState()
+    const {token} = useContext(AuthContext)
 
 
     function confirmBuy (event) {
-
-        const purchaseInfo = {
+        event.preventDefault()
+        const buyInfo = {
             name:name,
             CEP:CEP,
             paymentType:payment,
+            products:purchaseProducts,
+            value:purchaseTotal
         }
 
-        event.preventDefault()
-        axios.post(`${BASE_URL}/purchase`, {
-            name:name,
-            CEP:CEP,
-            paymentType:payment,})
+        console.log(buyInfo)
+
+        axios.post(`${BASE_URL}/purchase`, 
+            buyInfo,{headers :{"Authorization": `Bearer ${token}`}
+        })
             .then(ans => {
                 alert("Compra concluída com sucesso")
-                Navigate("/")})
-            .catch(alert("Ocorreu um, erro. Tente novamente mais tarde"))
+                navigate("/")})
+            .catch( ans => console.log(ans))
 
     }
 
@@ -38,7 +42,7 @@ export default function Checkout () {
         <CheckoutScreen>
             <form onSubmit={confirmBuy}>
                 <input placeholder="Nome" onChange={ e => setName(e.target.value)}/>
-                <input placeholder="CEP" onChange={ e => setCEP(e.target.value)}/>
+                <input placeholder="CEP" type="number" onChange={ e => setCEP(e.target.value)}/>
                 <div>
                     <input  type="radio" id="cartao" value="cartao" name="payment" onChange={e => setPayment(e.target.value)}/>
                     <label htmlFor="cartao">Cartão</label>

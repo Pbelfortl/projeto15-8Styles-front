@@ -1,18 +1,22 @@
 import { useState } from "react"
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
 
 
 
 export default function SideBar({ setCategory }) {
 
     const [show, setShow] = useState(false)
+    const naviagte = useNavigate()
 
     return (
         <Bar show={show}>
             <ion-icon name="list-outline" onClick={() => setShow(!show)}></ion-icon>
             
             {show === false ? <></> : <>
-            <Category onClick={ () => setCategory({category:"", subCategory:""})}><h1>Home</h1></Category>
+            <Category onClick={ () => {
+                naviagte("/")
+                setCategory({category:"", subCategory:""})}}><h1>Home</h1></Category>
             <Line />
             <Category>
                 <h1 onClick={(() => setCategory({category: "roupa", subCategory: ""}))}>Roupas</h1>

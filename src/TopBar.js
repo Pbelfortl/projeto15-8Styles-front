@@ -1,10 +1,12 @@
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import AuthContext from "./contexts/authContext"
 import Login from "./Login"
 import SignUp from "./Sign-up"
 
 export default function TopBar() {
+    const navigate = useNavigate()
 
     const [showLogin, setShowLogin] = useState(false)
     const [showSignUp, setShowSignUp] = useState(false)
@@ -14,6 +16,7 @@ export default function TopBar() {
         localStorage.removeItem("token");
         //localStorage.removeItem("userName");
         setToken("");
+        navigate("/")
         //setUserName("");
     }
 
@@ -43,7 +46,7 @@ export default function TopBar() {
                         setShowSignUp(false)
                         setShowLogin(true)
                     }}>Entrar</button>
-                    <ion-icon name="cart-outline"></ion-icon>
+                    <ion-icon name="cart-outline" onClick={() => navigate("/carrinho")}></ion-icon>
                     <ion-icon name="exit-outline" onClick={logout}></ion-icon>
                 </Account>
             </Bar>
