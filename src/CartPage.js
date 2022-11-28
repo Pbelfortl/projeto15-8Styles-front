@@ -2,17 +2,21 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import AuthContext from "./contexts/authContext";
+import SideBar from "./SideBar";
+import TopBar from "./TopBar";
 
-export default function CartPage() {
+export default function CartPage({setCategory}) {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
   const { token } = useContext(AuthContext);
-  
+
   function getCartItems() {
     const URL = "http://localhost:5000/cart";
     const config = {
-      headers: `Bearer ${token}`,
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
     };
 
     axios
@@ -28,26 +32,29 @@ export default function CartPage() {
       .catch((err) => console.log(err.response.data.message));
   }
 
-  console.log(token)
   useEffect(() => {
     getCartItems();
   }, [token]);
 
   return (
-    <MainContainer>
-      {cart.length !== 0 ? (
-        cart.map((item, i) => (
-          <CartItem key={i}>
-            <img src={item.image} alt={item.name} />
-            <strong>{item.name}</strong>
-            <p>R$ {item.value}</p>
-          </CartItem>
-        ))
-      ) : (
-        <h3>Carrinho vazio ou usuário não está logado</h3>
-      )}
-      Valor total: R$ {total}
-    </MainContainer>
+    <>
+      <TopBar />
+      <SideBar setCategory={setCategory} />
+      <MainContainer>
+        {cart.length !== 0 ? (
+          cart.map((item, i) => (
+            <CartItem key={i}>
+              <img src={item.image} alt={item.name} />
+              <strong>{item.name}</strong>
+              <p>R$ {item.value}</p>
+            </CartItem>
+          ))
+        ) : (
+          <h3>Carrinho vazio ou usuário não está logado</h3>
+        )}
+        Valor total: R$ {total}
+      </MainContainer>
+    </>
   );
 }
 
