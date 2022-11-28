@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components"
 import axios from "axios";
+import BASE_URL from "./constants/url";
 
 
 export default function SignUp({ showSignUp, setShowSignUp, setShowLogin }) {
-
-    const URL = "http://localhost:5000/sign-up"
+    
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmedPass: "" });
 
     function handleForm(e) {
@@ -23,7 +23,7 @@ export default function SignUp({ showSignUp, setShowSignUp, setShowLogin }) {
         console.log(body);
 
         try {
-            await axios.post(URL, body);
+            await axios.post(`${BASE_URL}/sign-up`, body);
             setShowSignUp(false);
             const emptyInput = { name: "", email: "", password: "", confirmedPass: "" }
             setForm(emptyInput)
@@ -89,7 +89,7 @@ const SingUpComponent = styled.div`
     top: 60px;
     right: 60px;
     height: 35vh;
-    width: 20vw;
+    width: 320px;
     background-color: black;
     opacity: 0.9;
     border-radius: 8px;

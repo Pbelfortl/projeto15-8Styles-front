@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import styled from "styled-components"
 import axios from "axios";
 import AuthContext from "./contexts/authContext";
+import BASE_URL from "./constants/url";
 
 
 
 export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
     const {token, setToken } =  useContext(AuthContext)
     const [form, setForm] = useState({ email: "", password: "" });
-    const URL = "http://localhost:5000/sign-in"
 
     function handleForm(e) {
         const { name, value } = e.target;
@@ -26,7 +26,7 @@ export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
 
 
         try {
-            const promise = await axios.post(URL, body);
+            const promise = await axios.post(`${BASE_URL}/sign-in`, body)
             setShowLogin(false)
             console.log(promise.data.token);
             setToken(promise.data.token);
@@ -34,6 +34,7 @@ export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
 
             const emptyInput = { email: "", password: "" }
             setForm(emptyInput)
+            alert("Login efetuado com sucesso")
         } catch (error) {
             console.log(error);
             alert("email e/ou senha incorretos")
@@ -79,7 +80,7 @@ const Logincomponent = styled.div`
     top: 60px;
     right: 60px;
     height: 25vh;
-    width: 20vw;
+    width: 320px;
     background-color: black;
     opacity: 0.9;
     border-radius: 8px;

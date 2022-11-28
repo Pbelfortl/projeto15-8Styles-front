@@ -51,6 +51,7 @@ export default function CartPage({setCategory,purchaseProducts, setPurchaseProdu
       <TopBar />
       <SideBar setCategory={setCategory} />
       <MainContainer>
+        <div>
         {cart.length !== 0 ? (
           cart.map((item, i) => (
             <CartItem key={i}>
@@ -62,11 +63,14 @@ export default function CartPage({setCategory,purchaseProducts, setPurchaseProdu
         ) : (
           <h3>Carrinho vazio ou usuário não está logado</h3>
         )}
-        Valor total: R$ {total.toFixed(2)}
+        </div>
+        <Confirm>
+          Valor total: R$ {total.toFixed(2)}
 
-        <button onClick={() => { (purchaseProducts.length===0) ? 
-            alert("Insira ao menos um item no carrinho") : 
-            navigate("/checkout")}}>Concluir Compra</button>
+          <button onClick={() => { (purchaseProducts.length===0) ? 
+          alert("Insira ao menos um item no carrinho") : 
+          navigate("/checkout")}}>Concluir Compra</button>
+        </Confirm>
       </MainContainer>
     </>
   );
@@ -100,6 +104,10 @@ const MainContainer = styled.div`
     border-radius: 5px;
     cursor: pointer;
   }
+  div{
+    align-items: center;
+    width: 400px;
+  }
 `;
 
 const CartItem = styled.div`
@@ -121,4 +129,9 @@ const CartItem = styled.div`
   ion-icon{
     cursor: pointer;
   }
+`
+
+const Confirm = styled.div`
+  display: flex;
+  flex-direction: column;
 `

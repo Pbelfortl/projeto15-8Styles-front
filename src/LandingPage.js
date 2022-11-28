@@ -25,12 +25,16 @@ export default function LandingPage ({ category, setCategory }) {
     }, [category])
 
     function addtoCart(id) {
+        if(!token){
+            alert("Faça login para adicionar itens ao carrinho")
+            return
+        }
         const config = {
             headers: {
               "Authorization":`Bearer ${token}`
             }
           };
-        axios.post(`${BASE_URL}/addCart?product=${id}`, {} ,config)
+        axios.post(`${BASE_URL}/addCart?product=${id}`, {} ,config).then(() => alert("Item adicionado!"))
     }
 
     return(
@@ -99,5 +103,6 @@ const Product = styled.div`
         width: 30px;
         height: 30px;
         font-size: 20px;
+        cursor: pointer;
     }
 `
