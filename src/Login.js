@@ -78,11 +78,12 @@ const Logincomponent = styled.div`
     justify-content: center;
     top: 60px;
     right: 60px;
-    height: 20vh;
+    height: 25vh;
     width: 20vw;
-    background-color: grey;
-    opacity: 0.7;
+    background-color: black;
+    opacity: 0.9;
     border-radius: 8px;
+    z-index: 1;
     form{
         align-items: center;
         justify-content: center;
