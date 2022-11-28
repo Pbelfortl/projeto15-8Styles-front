@@ -10,7 +10,7 @@ import BASE_URL from "./constants/url.js"
 export default function LandingPage ({ category, setCategory }) {
 
     const [products, setProducts] = useState([])
-
+    
     useEffect(() => {
         const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}&subCategory=${category.subCategory}`)
 
