@@ -15,7 +15,6 @@ export default function LandingPage ({ category, setCategory }) {
         const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}&subCategory=${category.subCategory}`)
 
         promise.then((ans) => {
-            console.log(ans.data)
             setProducts(ans.data)
         })
 
