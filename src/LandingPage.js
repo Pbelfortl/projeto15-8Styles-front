@@ -7,15 +7,15 @@ import SideBar from "./SideBar.js";
 import BASE_URL from "./constants/url.js"
     
 
-export default function LandingPage ({ category }) {
+export default function LandingPage ({ category, setCategory }) {
 
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}?subCategory=${category.subCategory}`)
+        const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}&subCategory=${category.subCategory}`)
 
         promise.then((ans) => {
-            console.log("ok")
+            console.log(ans.data)
             setProducts(ans.data)
         })
 
@@ -26,7 +26,7 @@ export default function LandingPage ({ category }) {
     return(
         <>
         <TopBar/>
-        <SideBar/>
+        <SideBar category={category} setCategory={setCategory}/>
         <Container>
             {products.map(product => 
                 <Product key={product._id}>  
