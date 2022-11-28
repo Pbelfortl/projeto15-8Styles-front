@@ -29,7 +29,7 @@ export default function CartPage({setCategory,purchaseProducts, setPurchaseProdu
       .then((res) => {
         setCart(res.data);
         console.log(res.data)
-        
+        totalValue=0
         res.data.forEach((item) => {
           (totalValue += (item.product.value))
           products.push(item.product)
