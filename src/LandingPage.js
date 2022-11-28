@@ -9,7 +9,8 @@ import AuthContext from "./contexts/authContext.js";
 
 export default function LandingPage ({ category, setCategory }) {
     const { token } =  useContext(AuthContext)
-
+    console.log(token)
+    
     const [products, setProducts] = useState([])
     
     useEffect(() => {
@@ -24,13 +25,12 @@ export default function LandingPage ({ category, setCategory }) {
     }, [category])
 
     function addtoCart(id) {
-        console.log(token)
         const config = {
             headers: {
-              "Authorization": `Bearer ${token}`
+              "Authorization":`Bearer ${token}`
             }
           };
-        axios.post(`${BASE_URL}/addCart?product=${id}`, config)
+        axios.post(`${BASE_URL}/addCart?product=${id}`,{},config)
     }
 
     return(

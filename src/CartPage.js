@@ -25,7 +25,7 @@ export default function CartPage({setCategory}) {
         setCart(res.data);
 
         let totalValue = 0;
-        res.data.forEach((item) => (totalValue += Number(item.value)));
+        res.data.forEach((item) => (totalValue += Number(item.product.value)));
 
         setTotal(totalValue);
       })
@@ -44,9 +44,9 @@ export default function CartPage({setCategory}) {
         {cart.length !== 0 ? (
           cart.map((item, i) => (
             <CartItem key={i}>
-              <img src={item.image} alt={item.name} />
-              <strong>{item.name}</strong>
-              <p>R$ {item.value}</p>
+              <img src={item.product.image} alt={item.name} />
+              <strong>{item.product.name}</strong>
+              <p>R$ {item.product.value}</p>
             </CartItem>
           ))
         ) : (
@@ -85,8 +85,9 @@ const CartItem = styled.div`
   border: 1px solid black;
   overflow: scroll;
   img {
-    width: auto;
+    width: 80px;
     height: auto;
+    border-radius: 5px;
     object-fit: cover;
   }
 `;
