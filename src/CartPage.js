@@ -7,7 +7,7 @@ import AuthContext from "./contexts/authContext";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
 
-export default function CartPage({setCategory, setPurchaseProducts, setPurchaseTotal}) {
+export default function CartPage({setCategory,purchaseProducts, setPurchaseProducts, setPurchaseTotal}) {
   const navigate = useNavigate()
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
@@ -64,7 +64,9 @@ export default function CartPage({setCategory, setPurchaseProducts, setPurchaseT
         )}
         Valor total: R$ {total.toFixed(2)}
 
-        <button onClick={() => navigate("/checkout")}>Concluir Compra</button>
+        <button onClick={() => { (purchaseProducts.length===0) ? 
+            alert("Insira ao menos um item no carrinho") : 
+            navigate("/checkout")}}>Concluir Compra</button>
       </MainContainer>
     </>
   );

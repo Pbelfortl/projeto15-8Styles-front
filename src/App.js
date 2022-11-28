@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage category={category} setCategory={setCategory}/>} />
-          <Route path="/carrinho" element={<CartPage setCategory={setCategory} setPurchaseProducts={setPurchaseProducts} setPurchaseTotal={setPurchaseTotal} />} />
+          <Route path="/carrinho" element={<CartPage setCategory={setCategory} setPurchaseProducts={setPurchaseProducts} purchaseProducts={purchaseProducts} setPurchaseTotal={setPurchaseTotal} />} />
           <Route path="/checkout" element={<Checkout purchaseProducts={purchaseProducts} purchaseTotal={purchaseTotal} />}/>
         </Routes>
       </BrowserRouter>

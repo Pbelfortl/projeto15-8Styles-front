@@ -17,6 +17,7 @@ export default function Checkout ({purchaseProducts, purchaseTotal}) {
 
     function confirmBuy (event) {
         event.preventDefault()
+
         const buyInfo = {
             name:name,
             CEP:CEP,
@@ -24,6 +25,7 @@ export default function Checkout ({purchaseProducts, purchaseTotal}) {
             products:purchaseProducts,
             value:purchaseTotal
         }
+
 
         console.log(buyInfo)
 

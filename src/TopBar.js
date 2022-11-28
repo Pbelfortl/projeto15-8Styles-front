@@ -4,6 +4,7 @@ import styled from "styled-components"
 import AuthContext from "./contexts/authContext"
 import Login from "./Login"
 import SignUp from "./Sign-up"
+import Logo from "./images/Logo.png"
 
 export default function TopBar() {
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ export default function TopBar() {
         localStorage.removeItem("token");
         //localStorage.removeItem("userName");
         setToken("");
+        alert("Logout efetuado com sucesso!")
         navigate("/")
         //setUserName("");
     }
@@ -24,7 +26,7 @@ export default function TopBar() {
     return (
         <>
             <Bar>
-                <input placeholder="Pesquisar"></input>
+                <img src={Logo}/>
                 <Account>
                     <button onClick={() => {
 
@@ -73,6 +75,11 @@ const Bar = styled.div`
         margin-left: 100px;
         height: 30px;
         width: 250px;
+    }
+    img{
+        width: 50px;
+        height: 50px;
+        margin-left: 150px;
     }
 `
 const Account = styled.div`
