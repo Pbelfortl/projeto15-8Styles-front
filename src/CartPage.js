@@ -31,7 +31,7 @@ export default function CartPage({setCategory, setPurchaseProducts, setPurchaseT
         console.log(res.data)
         
         res.data.forEach((item) => {
-          (totalValue += (item.product.product.value))
+          (totalValue += (item.product.value))
           products.push(item.product)
         });
         console.log(totalValue)
@@ -54,9 +54,9 @@ export default function CartPage({setCategory, setPurchaseProducts, setPurchaseT
         {cart.length !== 0 ? (
           cart.map((item, i) => (
             <CartItem key={i}>
-              <img src={item.image} alt={item.name} />
-              <strong>{item.name}</strong>
-              <p>R$ {item.value}</p>
+              <img src={item.product.image} alt={item.product.name} />
+              <strong>{item.product.name}</strong>
+              <p>R$ {item.product.value}</p>
             </CartItem>
           ))
         ) : (
@@ -112,8 +112,8 @@ const CartItem = styled.div`
   border-radius: 5px;
   margin-bottom: 15px;
   img {
-    width: auto;
-    height: auto;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
   }
   ion-icon{
