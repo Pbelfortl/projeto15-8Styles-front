@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Checkout from "./Checkout";
 import { AuthProvider } from "./contexts/authContext";
-import AuthContext, { AuthProvider } from "./contexts/authContext";
 import { GlobalStyle } from "./GlobalStyles";
 import LandingPage from "./LandingPage";
 
@@ -10,8 +9,6 @@ import LandingPage from "./LandingPage";
 function App() {
 
   const [category, setCategory] = useState({category:"", subCategory:""})
-  const [category, setCategory] = useState({category: "", subCategory: ""})
-  
 
   return (
     <AuthProvider>
