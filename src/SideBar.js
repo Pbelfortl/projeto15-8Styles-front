@@ -10,28 +10,29 @@ export default function SideBar({ setCategory }) {
     return (
         <Bar show={show}>
             <ion-icon name="list-outline" onClick={() => setShow(!show)}></ion-icon>
-            <Category onClick={ () => setCategory({category: "", subCategory: ""})}><h1>Home</h1></Category>
+            <Category onClick={ () => setCategory({category:"", subCategory:""})}><h1>Home</h1></Category>
             <Line />
             <Category>
-                <h1 onClick={(() => setCategory({category: "Roupa", subCategory: ""}))}>Roupas</h1>
-                <SubCategory onClick={(() => setCategory({category: "Roupa", subCategory: "Camisa"}))}>Camisas</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Roupa", subCategory: "Camiseta"}))}>Camisetas</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Roupa", subCategory: "Vestido"}))}>Vestidos</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Roupa", subCategory: "Moleton"}))}>Moletons</SubCategory>
+                <h1 onClick={(() => setCategory({category: "roupa", subCategory: ""}))}>Roupas</h1>
+                <SubCategory onClick={(() => setCategory({category: "roupa", subCategory: "camisa"}))}>Camisas</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "roupa", subCategory: "camiseta"}))}>Camisetas</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "roupa", subCategory: "short"}))}>Shorts</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "roupa", subCategory: "vestido"}))}>Vestidos</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "roupa", subCategory: "moleton"}))}>Moletons</SubCategory>
             </Category>
             <Line />
             <Category>
-                <h1 onClick={(() => setCategory({category: "Calcado", subCategory: ""}))}>Calçados</h1>
-                <SubCategory onClick={(() => setCategory({category: "Calcado", subCategory: "Tenis"}))}>Tênis</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Calcado", subCategory: "Sapato"}))}>Sapatos</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Calcado", subCategory: "Sandalia"}))}>Sandálias</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Calcado", subCategory: "Chinelo"}))}>Chinelos</SubCategory>
+                <h1 onClick={(() => setCategory({category:"calçado", subCategory:""}))}>Calçados</h1>
+                <SubCategory onClick={(() => setCategory({category: "calçado", subCategory: "tênis"}))}>Tênis</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "calçado", subCategory: "sapato"}))}>Sapatos</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "calçado", subCategory: "sandalia"}))}>Sandálias</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "calçado", subCategory: "chinelo"}))}>Chinelos</SubCategory>
             </Category>
             <Line />
             <Category>
-                <h1 onClick={(() => setCategory({category: "Acessorio", subCategory: ""}))}>Acessórios</h1>
-                <SubCategory onClick={(() => setCategory({category: "Acessorio", subCategory: "Bone"}))}>Bonés</SubCategory>
-                <SubCategory onClick={(() => setCategory({category: "Acessorio", subCategory: "Bucket"}))}>Buckets</SubCategory>
+                <h1 onClick={(() => setCategory({category: "acessório", subCategory: ""}))}>Acessórios</h1>
+                <SubCategory onClick={(() => setCategory({category: "acessório", subCategory: "boné"}))}>Bonés</SubCategory>
+                <SubCategory onClick={(() => setCategory({category: "acessório", subCategory: "bucket"}))}>Buckets</SubCategory>
             </Category>
         </Bar>
     )

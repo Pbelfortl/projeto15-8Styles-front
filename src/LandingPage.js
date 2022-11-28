@@ -12,10 +12,9 @@ export default function LandingPage ({ category, setCategory }) {
     const [products, setProducts] = useState([])
     
     useEffect(() => {
-        const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}?subCategory=${category.subCategory}`)
+        const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}&subCategory=${category.subCategory}`)
 
         promise.then((ans) => {
-            console.log("ok")
             setProducts(ans.data)
         })
 
@@ -26,7 +25,7 @@ export default function LandingPage ({ category, setCategory }) {
     return(
         <>
         <TopBar/>
-        <SideBar setCategory={setCategory}/>
+        <SideBar category={category} setCategory={setCategory}/>
         <Container>
             {products.map(product => 
                 <Product key={product._id}>  
