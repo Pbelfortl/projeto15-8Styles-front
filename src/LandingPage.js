@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from "react"
 import styled from "styled-components";
 import axios from "axios"
-import AuthContext from "./contexts/authContext"
 import TopBar from "./TopBar.js";
 import SideBar from "./SideBar.js";
 import BASE_URL from "./constants/url.js"
+import AuthContext from "./contexts/authContext.js";
     
 
 export default function LandingPage ({ category, setCategory }) {
+    const { token } =  useContext(AuthContext)
 
     const [products, setProducts] = useState([])
     
     useEffect(() => {
+
         const promise = axios.get(`${BASE_URL}/getProducts?category=${category.category}&subCategory=${category.subCategory}`)
 
         promise.then((ans) => {
@@ -21,6 +23,15 @@ export default function LandingPage ({ category, setCategory }) {
         promise.catch(() =>  console.log("deu ruim"))
     }, [category])
 
+    function addtoCart(id) {
+        console.log(token)
+        const config = {
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          };
+        axios.post(`${BASE_URL}/addCart?product=${id}`, config)
+    }
 
     return(
         <>
@@ -32,7 +43,7 @@ export default function LandingPage ({ category, setCategory }) {
                     <img src={product.image} alt="produto"/>
                     <div><span>{product.name}</span> <span>R$ {(product.value).toFixed(2)}</span></div>
                     <div>{product.description}</div>
-                    <button><ion-icon name="bag-add-outline"></ion-icon></button>
+                    <button onClick={() => addtoCart(product._id)}><ion-icon name="bag-add-outline"></ion-icon></button>
                 </Product>)}
         </Container>
         </>
