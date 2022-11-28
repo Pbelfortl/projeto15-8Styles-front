@@ -27,6 +27,7 @@ export default function SignUp({ showSignUp, setShowSignUp, setShowLogin }) {
             setShowSignUp(false);
             const emptyInput = { name: "", email: "", password: "", confirmedPass: "" }
             setForm(emptyInput)
+            alert("Cadastro efetuado com sucesso!")
         } catch (error) {
             alert(error.response.data.message);
         }

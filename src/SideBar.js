@@ -10,6 +10,8 @@ export default function SideBar({ setCategory }) {
     return (
         <Bar show={show}>
             <ion-icon name="list-outline" onClick={() => setShow(!show)}></ion-icon>
+            
+            {show === false ? <></> : <>
             <Category onClick={ () => setCategory({category:"", subCategory:""})}><h1>Home</h1></Category>
             <Line />
             <Category>
@@ -34,6 +36,9 @@ export default function SideBar({ setCategory }) {
                 <SubCategory onClick={(() => setCategory({category: "acessório", subCategory: "boné"}))}>Bonés</SubCategory>
                 <SubCategory onClick={(() => setCategory({category: "acessório", subCategory: "bucket"}))}>Buckets</SubCategory>
             </Category>
+            </>
+            }
+            
         </Bar>
     )
 }
@@ -46,7 +51,7 @@ const Bar = styled.aside`
     position: fixed;
     top: 0;
     left: 0;
-    width: ${props => props.show === false ? '8vw' : '16vw'};
+    width: ${props => props.show === false ? '6vw' : '12vw'};
     //width: 8vw;
     height: 100vh;
     background-color: #181824;

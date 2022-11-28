@@ -40,7 +40,6 @@ export default function LandingPage ({ category, setCategory }) {
     )
 }
 
-
 const Container = styled.div`
     box-sizing: border-box;
     justify-content: center;
